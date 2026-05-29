@@ -29,6 +29,11 @@ section{background:#fff;border-radius:10px;margin-bottom:1.5rem;box-shadow:0 2px
 .sh-verbs{background:linear-gradient(90deg,#7b3f00,#c0392b);}
 .sh-prep{background:linear-gradient(90deg,#145a32,#27ae60);}
 .sh-word{background:linear-gradient(90deg,#b7770d,#e8b84b);color:var(--primary)!important;}
+.sh-dual{background:linear-gradient(90deg,#0e6655,#16a085);}
+.dual-hero{background:linear-gradient(135deg,#0e6655,#16a085);color:#fff;border-radius:10px;padding:1rem 1.2rem;margin:.2rem 0 1rem;}
+.dual-hero strong{color:#fff;}
+.dual-hero .big{font-size:1.5rem;font-weight:800;display:block;margin-bottom:.2rem;}
+.dual-chip{display:inline-block;background:#16a085;color:#fff;border-radius:50px;padding:.15rem .7rem;font-size:.8rem;font-weight:700;margin:.15rem .2rem;}
 .sh-exam1{background:linear-gradient(90deg,#154360,#1a5276);}
 .sh-exam2{background:linear-gradient(90deg,#4a235a,#7d3c98);}
 .sh-exam3{background:linear-gradient(90deg,#7b241c,#c0392b);}
@@ -189,16 +194,340 @@ textarea{width:100%;}
 <div class="toc">
   <h2>Vsebina lekcije</h2>
   <div class="toc-grid">
+    <div class="toc-item" onclick="openSection('s-dual')" style="border-color:#16a085;background:#e8f6f3;font-weight:700;">⭐ Dvojina — The Dual (poseben za dva!)</div>
     <div class="toc-item" onclick="openSection('s-nouns')">📌 1. Samostalniki in skloni</div>
     <div class="toc-item" onclick="openSection('s-adj')">📌 2. Pridevniki in števniki</div>
     <div class="toc-item" onclick="openSection('s-verbs')">📌 3. Glagoli in časi</div>
     <div class="toc-item" onclick="openSection('s-prep')">📌 4. Predlogi</div>
     <div class="toc-item" onclick="openSection('s-word')">📌 5. Besedni red</div>
-    <div class="toc-item" onclick="openSection('s-exam1')">📝 Izpit 1 — Slovnica (60 vpr.)</div>
-    <div class="toc-item" onclick="openSection('s-exam2')">📝 Izpit 2 — Mešani (60 vpr.)</div>
-    <div class="toc-item" onclick="openSection('s-exam3')">📝 Izpit 3 — Simulacija B1 (60 vpr.)</div>
+    <div class="toc-item" onclick="openSection('s-exam1')">📝 Izpit 1 — Slovnica (66 vpr.)</div>
+    <div class="toc-item" onclick="openSection('s-exam2')">📝 Izpit 2 — Mešani (66 vpr.)</div>
+    <div class="toc-item" onclick="openSection('s-exam3')">📝 Izpit 3 — Simulacija B1 (64 vpr.)</div>
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FEATURED SECTION: DVOJINA (THE DUAL)
+═══════════════════════════════════════════════════════════════════════ -->
+<section id="s-dual">
+  <div class="section-header sh-dual" onclick="toggle(this)">⭐ Dvojina — The Dual (samo za točno DVA) <span>▲</span></div>
+  <div class="section-body open">
+
+    <div class="dual-hero">
+      <span class="big">👫 Slovenščina šteje na tri načine!</span>
+      Večina jezikov pozna le <strong>ednino</strong> (1) in <strong>množino</strong> (več). Slovenščina ima vmes še <strong>dvojino</strong> — posebno obliko za <strong>natanko dva</strong>. To je ena najbolj prepoznavnih posebnosti slovenščine in jo ohranja le še peščica živih jezikov na svetu!
+      <div style="margin-top:.6rem">
+        <span class="dual-chip">1 → ednina</span>
+        <span class="dual-chip">2 → DVOJINA</span>
+        <span class="dual-chip">3+ → množina</span>
+      </div>
+    </div>
+
+    <div class="note purple">💚 <strong>Zabavno dejstvo:</strong> Slovenci pravijo, da je njihov jezik ustvarjen za zaljubljene — dva človeka sta vedno <em>»midva«</em>. Stavek <em>»Imava se rada«</em> (the two of us love each other) je možen samo v dvojini. Tudi <em>»Greva?«</em> pomeni »Shall <strong>we two</strong> go?«</div>
+
+    <h3>0.1 Osebni zaimki v dvojini (Dual personal pronouns)</h3>
+    <div class="note blue">Dvojina loči <strong>moško</strong> in <strong>žensko</strong> obliko. Moška oblika velja tudi za mešano skupino (moški + ženska).</div>
+    <table class="grammar-table">
+      <tr><th class="th-teal">Oseba</th><th class="th-teal">Ednina (1)</th><th class="th-teal">Dvojina — moški/mešano (2)</th><th class="th-teal">Dvojina — ženski (2)</th><th class="th-teal">Množina (3+)</th></tr>
+      <tr><td>1. (we)</td><td>jaz</td><td><strong>midva</strong></td><td><strong>midve</strong> <span style="color:#888">(medve)</span></td><td>mi / me</td></tr>
+      <tr><td>2. (you)</td><td>ti</td><td><strong>vidva</strong></td><td><strong>vidve</strong> <span style="color:#888">(vedve)</span></td><td>vi / ve</td></tr>
+      <tr><td>3. (they)</td><td>on / ona / ono</td><td><strong>onadva</strong></td><td><strong>onidve</strong></td><td>oni / one / ona</td></tr>
+    </table>
+    <div class="note">Primeri: <em>Midva sva brata.</em> (the two of us are brothers) · <em>Midve sva sestri.</em> (the two of us, women) · <em>Vidva sta prijatelja.</em> · <em>Onidve sta najboljši prijateljici.</em></div>
+
+    <h3>0.2 Glagol »biti« v dvojini (The verb »to be«)</h3>
+    <table class="grammar-table">
+      <tr><th class="th-teal">Oseba</th><th class="th-teal">Ednina</th><th class="th-teal">Dvojina</th><th class="th-teal">Množina</th></tr>
+      <tr><td>1.</td><td>jaz <strong>sem</strong></td><td>midva/midve <strong>sva</strong></td><td>mi <strong>smo</strong></td></tr>
+      <tr><td>2.</td><td>ti <strong>si</strong></td><td>vidva/vidve <strong>sta</strong></td><td>vi <strong>ste</strong></td></tr>
+      <tr><td>3.</td><td>on/ona <strong>je</strong></td><td>onadva/onidve <strong>sta</strong></td><td>oni <strong>so</strong></td></tr>
+    </table>
+    <div class="note green">🔑 <strong>Zapomni si:</strong> 1. oseba dvojine je vedno <strong>-va</strong> (sva, delava, greva), 2. in 3. oseba pa <strong>-ta</strong> (sta, delata).</div>
+
+    <h3>0.3 Spreganje glagolov v dvojini (Verb conjugation — present)</h3>
+    <div class="note">Končnice dvojine: 1. oseba <strong>-va</strong>, 2. oseba <strong>-ta</strong>, 3. oseba <strong>-ta</strong>.</div>
+    <table class="grammar-table">
+      <tr><th class="th-teal">Glagol</th><th class="th-teal">1. midva/-ve</th><th class="th-teal">2. vidva/-ve</th><th class="th-teal">3. onadva/-dve</th></tr>
+      <tr><td>delati (to work)</td><td><strong>delava</strong></td><td><strong>delata</strong></td><td><strong>delata</strong></td></tr>
+      <tr><td>govoriti (to speak)</td><td><strong>govoriva</strong></td><td><strong>govorita</strong></td><td><strong>govorita</strong></td></tr>
+      <tr><td>imeti (to have)</td><td><strong>imava</strong></td><td><strong>imata</strong></td><td><strong>imata</strong></td></tr>
+      <tr><td>iti (to go) — nepravilen</td><td><strong>greva</strong></td><td><strong>gresta</strong></td><td><strong>gresta</strong></td></tr>
+    </table>
+
+    <h3>0.4 Preteklik v dvojini (Past tense)</h3>
+    <div class="note">Preteklik = <strong>biti</strong> v dvojini (sva / sta / sta) + <strong>deležnik na -l</strong>. V dvojini se deležnik končuje na <strong>-la</strong> (moški) ali <strong>-li</strong> (ženski).</div>
+    <table class="grammar-table">
+      <tr><th class="th-teal">Subjekt</th><th class="th-teal">Moška oblika</th><th class="th-teal">Ženska oblika</th></tr>
+      <tr><td>1. midva / midve</td><td>sva <strong>delala</strong></td><td>sva <strong>delali</strong></td></tr>
+      <tr><td>2. vidva / vidve</td><td>sta <strong>delala</strong></td><td>sta <strong>delali</strong></td></tr>
+      <tr><td>3. onadva / onidve</td><td>sta <strong>delala</strong></td><td>sta <strong>delali</strong></td></tr>
+    </table>
+    <div class="note red">⚠️ <strong>Pozor (pogosta past!):</strong> Moška dvojina <em>delala</em> izgleda enako kot ženska ednina! Primerjaj: <em>Midva sva delala.</em> (two men worked) ⟷ <em>Ona je delala.</em> (one woman worked). Razlikuje ju pomožni glagol (sva vs je) in zaimek.</div>
+
+    <h3>0.5 Samostalniki v dvojini (Nouns)</h3>
+    <table class="grammar-table">
+      <tr><th class="th-teal">Spol</th><th class="th-teal">Ednina (1)</th><th class="th-teal">Dvojina (2)</th><th class="th-teal">Množina (3+)</th></tr>
+      <tr><td><span class="tag tag-m">M</span> mož</td><td>mož</td><td>dva <strong>moža</strong> <span style="color:#888">(-a)</span></td><td>(trije) možje</td></tr>
+      <tr><td><span class="tag tag-f">F</span> žena</td><td>žena</td><td>dve <strong>ženi</strong> <span style="color:#888">(-i)</span></td><td>(tri) žene</td></tr>
+      <tr><td><span class="tag tag-n">N</span> mesto</td><td>mesto</td><td>dve <strong>mesti</strong> <span style="color:#888">(-i)</span></td><td>(tri) mesta</td></tr>
+    </table>
+    <div class="note">Še primeri: okno → <em>dve okni</em> · jabolko → <em>dve jabolki</em> · hiša → <em>dve hiši</em> · otrok → <em>dva otroka</em>.</div>
+    <div class="note blue"><strong>Drugi skloni v dvojini</strong> (za napredne): dajalnik in orodnik imata končnico <strong>-ma/-ema</strong> (dvema <em>možema</em>, dvema <em>ženama</em>), mestnik <strong>-ih/-ah</strong> (o dveh <em>možeh</em>, o dveh <em>ženah</em>). Najpogosteje pa srečaš imenovalnik in tožilnik (dva moža / vidim dva moža).</div>
+
+    <h3>0.6 Pridevniki in števnik (Adjectives &amp; the number »two«)</h3>
+    <div class="note">Števnik: <strong>dva</strong> (moški), <strong>dve</strong> (ženski in srednji). »Oba/obe« = both.</div>
+    <table class="grammar-table">
+      <tr><th class="th-teal">Spol</th><th class="th-teal">Števnik + pridevnik + samostalnik</th><th class="th-teal">»oba/obe«</th></tr>
+      <tr><td><span class="tag tag-m">M</span></td><td>dva <strong>lepa</strong> fanta</td><td><strong>oba</strong> fanta</td></tr>
+      <tr><td><span class="tag tag-f">F</span></td><td>dve <strong>lepi</strong> punci</td><td><strong>obe</strong> punci</td></tr>
+      <tr><td><span class="tag tag-n">N</span></td><td>dve <strong>lepi</strong> mesti</td><td><strong>obe</strong> mesti</td></tr>
+    </table>
+
+    <h3>0.7 Pari in koristni izrazi (Pairs &amp; useful phrases)</h3>
+    <div class="wf-box">
+      <strong>Stvari, ki pridejo v paru,</strong> pogosto stojijo v dvojini:<br>
+      roka → <em>dve roki</em> · noga → <em>dve nogi</em> · uho → <em>dve ušesi</em> · oko → <em>dve očesi</em> (pesniško tudi »oči«).
+      <hr style="border:none;border-top:1px solid #f0c070;margin:.6rem 0">
+      <strong>Vsakdanji izrazi v dvojini:</strong><br>
+      <span class="dual-chip">Greva!</span> Let's (the two of us) go!
+      <span class="dual-chip">Se vidiva!</span> See you (us two)!
+      <span class="dual-chip">Imava se rada.</span> We two love each other.
+      <span class="dual-chip">Midva sva par.</span> We two are a couple.
+      <span class="dual-chip">Kam gresta?</span> Where are you two going?
+    </div>
+
+    <h3>0.8 Vaje — Dvojina (Exercises)</h3>
+    <ol style="padding-left:1.3rem;line-height:2.4;">
+      <li>Midva <input class="fill-inline" id="dv1" placeholder="?"> študenta. (biti)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv1','sva')">✓</button> <span id="dv1fb"></span></li>
+      <li>Vidva <input class="fill-inline" id="dv2" placeholder="?"> zelo dobro slovensko. (govoriti)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv2','govorita')">✓</button> <span id="dv2fb"></span></li>
+      <li>(dve žene) Ana in Eva sta <input class="fill-inline" id="dv3" placeholder="?">. — dvojina od »sestra« (imenovalnik)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv3','sestri')">✓</button> <span id="dv3fb"></span></li>
+      <li>Pred hišo stojita dva <input class="fill-inline" id="dv4" placeholder="?">. — dvojina od »mož« (imenovalnik)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv4','moža')">✓</button> <span id="dv4fb"></span></li>
+      <li>Zaimek za »naju dve« (dve ženski, 1. oseba):
+        <select id="dv5" onchange="checkSelect(this,'midve')" style="font-size:.95rem;padding:2px">
+          <option value="">—</option><option value="midva">midva</option><option value="midve">midve</option><option value="mi">mi</option>
+        </select></li>
+      <li>(preteklik, dva moška) Midva sva včeraj <input class="fill-inline" id="dv6" placeholder="?"> ves dan. (delati)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv6','delala')">✓</button> <span id="dv6fb"></span></li>
+      <li>(preteklik, dve ženski) Midve sva <input class="fill-inline" id="dv7" placeholder="?"> knjigo. (brati)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv7','brali')">✓</button> <span id="dv7fb"></span></li>
+      <li>Kupila sva dve <input class="fill-inline" id="dv8" placeholder="?"> hiši. (lep — pridevnik)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv8','lepi')">✓</button> <span id="dv8fb"></span></li>
+      <li>»Shall we two go to the cinema?« → Midva <input class="fill-inline" id="dv9" placeholder="?"> v kino? (iti)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv9','greva')">✓</button> <span id="dv9fb"></span></li>
+      <li>»Both girls are here.« → <input class="fill-inline" id="dv10" placeholder="?"> punci sta tukaj. (oba/obe)
+        <button class="btn btn-sm btn-primary" onclick="checkFill('dv10','obe')">✓</button> <span id="dv10fb"></span></li>
+    </ol>
+
+    <style>
+    .dvt-wrap{margin:.4rem 0 .5rem;}
+    .dvt-bar{display:flex;align-items:center;gap:.6rem;margin:.5rem 0;}
+    .dvt-stat{font-weight:700;color:#0e6655;font-size:.85rem;background:#e8f6f3;padding:.2rem .55rem;border-radius:7px;white-space:nowrap;}
+    .dvt-prog{flex:1;height:8px;background:#e3eaf2;border-radius:10px;overflow:hidden;}
+    .dvt-prog-fill{height:100%;width:0;background:linear-gradient(90deg,#16a085,#e8b84b);transition:width .35s;}
+    .dvt-stage{display:flex;align-items:center;gap:.5rem;perspective:1400px;}
+    .dvt-card{flex:1;min-height:175px;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,.2,.2,1);cursor:pointer;}
+    .dvt-card.flip{transform:rotateY(180deg);}
+    .dvt-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;text-align:center;border:2px solid #cfe8e1;}
+    .dvt-front{background:linear-gradient(160deg,#fff,#e8f6f3);}
+    .dvt-back{background:linear-gradient(160deg,#fff,#fef9e7);transform:rotateY(180deg);border-color:#f0c070;}
+    .dvt-cat{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#0e6655;margin-bottom:.4rem;}
+    .dvt-term{font-size:1.5rem;font-weight:800;color:#1b2a4a;line-height:1.25;}
+    .dvt-sub{font-size:.85rem;color:#666;margin-top:.4rem;}
+    .dvt-nav{flex:0 0 auto;width:40px;height:40px;border-radius:50%;border:2px solid #cfe8e1;background:#fff;color:#0e6655;font-size:1.4rem;line-height:1;cursor:pointer;}
+    .dvt-nav:hover{background:#16a085;color:#fff;border-color:#16a085;}
+    .dvt-tools{display:flex;gap:.4rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem;}
+    .dvt-chip{border:1.5px solid #cfe8e1;background:#fff;border-radius:50px;padding:.3rem .8rem;font-size:.8rem;font-weight:600;color:#0e6655;cursor:pointer;}
+    .dvt-chip:hover{background:#e8f6f3;}
+    .dvt-hint{text-align:center;color:#777;font-size:.78rem;margin-top:.5rem;}
+    .dvt-q{border:1px solid #ddd;border-radius:10px;padding:.7rem .9rem;margin-bottom:.7rem;}
+    .dvt-q-prompt{font-weight:700;color:#1b2a4a;margin-bottom:.5rem;}
+    .dvt-opts{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;}
+    .dvt-opt{border:2px solid #ddd;border-radius:8px;padding:.45rem .7rem;cursor:pointer;font-size:.9rem;background:#fff;}
+    .dvt-opt:hover{border-color:#16a085;background:#e8f6f3;}
+    .dvt-opt.sel{border-color:#0e6655;background:#e8f6f3;font-weight:700;}
+    .dvt-opt.ok{border-color:#27ae60;background:#eafaf1;color:#1e8449;font-weight:700;}
+    .dvt-opt.bad{border-color:#e74c3c;background:#fdf2f2;color:#c0392b;}
+    .dvt-result{display:none;text-align:center;background:#e8f6f3;border-radius:10px;padding:1rem;margin-top:.6rem;}
+    .dvt-result .big{font-size:2rem;font-weight:900;color:#0e6655;}
+    .dvt-result .grade{font-weight:700;margin-top:.3rem;}
+    @media(max-width:560px){.dvt-opts{grid-template-columns:1fr;}}
+    </style>
+
+    <h3>0.9 Kartice — Dvojina (Flashcards)</h3>
+    <div class="note">Obrni kartico, da preveriš pomen. Uporabi <strong>✅ Znam</strong> / <strong>🔁 Še se učim</strong> — napredek se shrani v brskalniku.</div>
+    <div class="dvt-wrap">
+      <div class="dvt-bar">
+        <div class="dvt-stat" id="dvt-pos">1 / 1</div>
+        <div class="dvt-prog"><div class="dvt-prog-fill" id="dvt-fill"></div></div>
+        <div class="dvt-stat" id="dvt-known">✅ 0</div>
+      </div>
+      <div class="dvt-stage">
+        <button class="dvt-nav" id="dvt-prev" title="Prejšnja">‹</button>
+        <div class="dvt-card" id="dvt-card">
+          <div class="dvt-face dvt-front" id="dvt-front"></div>
+          <div class="dvt-face dvt-back" id="dvt-back"></div>
+        </div>
+        <button class="dvt-nav" id="dvt-next" title="Naslednja">›</button>
+      </div>
+      <div class="dvt-hint">Klikni kartico za obrat · ◀ ▶ za premikanje</div>
+      <div class="dvt-tools">
+        <button class="dvt-chip" id="dvt-learning">🔁 Še se učim</button>
+        <button class="dvt-chip" id="dvt-knownbtn">✅ Znam</button>
+        <button class="dvt-chip" id="dvt-shuffle">🔀 Premešaj</button>
+        <button class="dvt-chip" id="dvt-dir">↔ SL → EN</button>
+        <button class="dvt-chip" id="dvt-reset">🗑 Ponastavi</button>
+      </div>
+    </div>
+
+    <h3 style="margin-top:1.4rem">0.10 Kviz — Dvojina (Quiz)</h3>
+    <div class="note">Tvori pravilne oblike dvojine. 10 naključnih vprašanj — ujemi čim več! 🏆</div>
+    <div class="dvt-wrap">
+      <div id="dvt-quiz-list"></div>
+      <div class="dvt-tools" style="justify-content:flex-start;">
+        <button class="btn btn-sm btn-accent" id="dvt-submit">✅ Oceni kviz</button>
+        <button class="dvt-chip" id="dvt-newquiz">🔄 Nov kviz</button>
+      </div>
+      <div class="dvt-result" id="dvt-result"></div>
+    </div>
+
+    <script>
+    (function(){
+      var CARDS=[
+        {sl:"midva",en:"we two (M / mixed)",cat:"zaimek"},
+        {sl:"midve",en:"we two (F)",cat:"zaimek"},
+        {sl:"vidva",en:"you two (M)",cat:"zaimek"},
+        {sl:"vidve",en:"you two (F)",cat:"zaimek"},
+        {sl:"onadva",en:"they two (M)",cat:"zaimek"},
+        {sl:"onidve",en:"they two (F)",cat:"zaimek"},
+        {sl:"sva",en:"(midva) are — biti, 1. dvojina",cat:"biti"},
+        {sl:"sta",en:"(vidva/onadva) are — biti, 2./3. dvojina",cat:"biti"},
+        {sl:"delava",en:"we two work — delati",cat:"glagol"},
+        {sl:"delata",en:"you/they two work — delati",cat:"glagol"},
+        {sl:"greva",en:"we two go — iti",cat:"glagol"},
+        {sl:"gresta",en:"you/they two go — iti",cat:"glagol"},
+        {sl:"imava",en:"we two have — imeti",cat:"glagol"},
+        {sl:"govoriva",en:"we two speak — govoriti",cat:"glagol"},
+        {sl:"sva delala",en:"we two worked (M) — preteklik",cat:"preteklik"},
+        {sl:"sva delali",en:"we two worked (F) — preteklik",cat:"preteklik"},
+        {sl:"dva moža",en:"two men (M, imenovalnik)",cat:"samostalnik"},
+        {sl:"dve ženi",en:"two women (F, imenovalnik)",cat:"samostalnik"},
+        {sl:"dve mesti",en:"two towns (N, imenovalnik)",cat:"samostalnik"},
+        {sl:"dve okni",en:"two windows",cat:"samostalnik"},
+        {sl:"dva lepa fanta",en:"two handsome boys (pridevnik M)",cat:"pridevnik"},
+        {sl:"dve lepi punci",en:"two pretty girls (pridevnik F)",cat:"pridevnik"},
+        {sl:"oba",en:"both (M)",cat:"pridevnik"},
+        {sl:"obe",en:"both (F / N)",cat:"pridevnik"},
+        {sl:"dve roki",en:"two hands (par)",cat:"pari"},
+        {sl:"dve nogi",en:"two legs (par)",cat:"pari"},
+        {sl:"Greva!",en:"Let's (we two) go!",cat:"izraz"},
+        {sl:"Se vidiva!",en:"See you (we two)!",cat:"izraz"},
+        {sl:"Imava se rada.",en:"We two love each other.",cat:"izraz"},
+        {sl:"Midva sva par.",en:"We two are a couple.",cat:"izraz"}
+      ];
+      var QUIZBANK=[
+        {q:"Midva ___ študenta. (biti)",a:"sva",d:["sem","smo","sta"]},
+        {q:"1. oseba dvojine glagola »delati«:",a:"delava",d:["delam","delamo","delata"]},
+        {q:"Dvojina od »žena« (dve ...):",a:"ženi",d:["žene","žena","ženah"]},
+        {q:"»two men« → dva ...",a:"moža",d:["mož","možje","možem"]},
+        {q:"Zaimek za dve ženski (1. oseba):",a:"midve",d:["midva","mi","medva"]},
+        {q:"Preteklik (dva moška): Midva sva ___ . (delati)",a:"delala",d:["delal","delali","delale"]},
+        {q:"Preteklik (dve ženski): Midve sva ___ . (brati)",a:"brali",d:["brala","bral","brale"]},
+        {q:"»iti«, 1. oseba dvojine:",a:"greva",d:["grem","gremo","gresta"]},
+        {q:"»both girls« → ___ punci",a:"obe",d:["oba","obadve","dva"]},
+        {q:"Vidva ___ prijatelja. (biti)",a:"sta",d:["sva","ste","si"]},
+        {q:"Pridevnik: dve ___ hiši (lep)",a:"lepi",d:["lepa","lepe","lepo"]},
+        {q:"Dvojina od »mesto« (dve ...):",a:"mesti",d:["mesta","mest","mestu"]},
+        {q:"»we two have« (imeti):",a:"imava",d:["imamo","imam","imata"]},
+        {q:"3. oseba dvojine »govoriti«:",a:"govorita",d:["govoriva","govorijo","govori"]},
+        {q:"Število, ki se veže z dvojino:",a:"dva/dve",d:["ena","tri","pet"]},
+        {q:"»onadva« + »iti« (3. oseba):",a:"gresta",d:["greta","greva","gredo"]}
+      ];
+      function shuf(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+      // ---- flashcards ----
+      var LKEY="dvt-known";
+      var known={};try{known=JSON.parse(localStorage.getItem(LKEY)||"{}")||{};}catch(e){known={};}
+      var dir="sl2en",view=[],pos=0,flipped=false;
+      var card=document.getElementById("dvt-card"),front=document.getElementById("dvt-front"),back=document.getElementById("dvt-back");
+      var posEl=document.getElementById("dvt-pos"),fill=document.getElementById("dvt-fill"),knownEl=document.getElementById("dvt-known"),dirBtn=document.getElementById("dvt-dir");
+      function kc(){var n=0;for(var k in known){if(known[k])n++;}return n;}
+      function save(){try{localStorage.setItem(LKEY,JSON.stringify(known));}catch(e){}}
+      function build(s){view=[];for(var i=0;i<CARDS.length;i++)view.push(i);if(s)shuf(view);pos=0;flipped=false;}
+      function face(c,showSl){return '<div class="dvt-cat">'+(showSl?c.cat:"English")+'</div><div class="dvt-term">'+(showSl?c.sl:c.en)+'</div>'+(showSl?'<div class="dvt-sub">klikni za pomen</div>':'<div class="dvt-sub">'+c.sl+'</div>');}
+      function render(){
+        card.classList.remove("flip");flipped=false;
+        knownEl.textContent="✅ "+kc()+" / "+CARDS.length;
+        var c=CARDS[view[pos]],sl=(dir==="sl2en");
+        front.innerHTML=sl?face(c,true):face(c,false);
+        back.innerHTML=sl?face(c,false):face(c,true);
+        posEl.textContent=(pos+1)+" / "+view.length;
+        fill.style.width=((pos+1)/view.length*100)+"%";
+      }
+      function go(d){pos=(pos+d+view.length)%view.length;render();}
+      function flip(){flipped=!flipped;card.classList.toggle("flip",flipped);}
+      function mark(k){known[CARDS[view[pos]].sl]=k;save();go(1);knownEl.textContent="✅ "+kc()+" / "+CARDS.length;}
+      card.addEventListener("click",flip);
+      document.getElementById("dvt-prev").addEventListener("click",function(){go(-1);});
+      document.getElementById("dvt-next").addEventListener("click",function(){go(1);});
+      document.getElementById("dvt-learning").addEventListener("click",function(){mark(false);});
+      document.getElementById("dvt-knownbtn").addEventListener("click",function(){mark(true);});
+      document.getElementById("dvt-shuffle").addEventListener("click",function(){build(true);render();});
+      document.getElementById("dvt-reset").addEventListener("click",function(){known={};save();render();});
+      dirBtn.addEventListener("click",function(){dir=(dir==="sl2en")?"en2sl":"sl2en";dirBtn.textContent=(dir==="sl2en")?"↔ SL → EN":"↔ EN → SL";render();});
+      build(true);render();
+
+      // ---- quiz ----
+      var qList=document.getElementById("dvt-quiz-list"),qRes=document.getElementById("dvt-result"),qSub=document.getElementById("dvt-submit");
+      var quiz=[],ansArr=[];
+      function makeQuiz(){
+        var pool=QUIZBANK.slice();shuf(pool);quiz=[];ansArr=[];
+        var n=Math.min(10,pool.length);
+        for(var i=0;i<n;i++){var item=pool[i];var opts=[item.a].concat(item.d.slice(0,3));shuf(opts);quiz.push({q:item.q,correct:item.a,opts:opts});ansArr.push(null);}
+      }
+      function renderQuiz(){
+        qRes.style.display="none";qRes.innerHTML="";qSub.style.display="";
+        var h="";
+        quiz.forEach(function(q,i){
+          h+='<div class="dvt-q" data-i="'+i+'"><div class="dvt-q-prompt">'+(i+1)+'. '+q.q+'</div><div class="dvt-opts">';
+          q.opts.forEach(function(o,j){h+='<div class="dvt-opt" data-i="'+i+'" data-j="'+j+'">'+o+'</div>';});
+          h+='</div></div>';
+        });
+        qList.innerHTML=h;
+        qList.querySelectorAll(".dvt-opt").forEach(function(o){
+          o.addEventListener("click",function(){
+            var i=+o.getAttribute("data-i");ansArr[i]=+o.getAttribute("data-j");
+            o.parentElement.querySelectorAll(".dvt-opt").forEach(function(x){x.classList.remove("sel");});
+            o.classList.add("sel");
+          });
+        });
+      }
+      qSub.addEventListener("click",function(){
+        var correct=0;
+        quiz.forEach(function(q,i){
+          var qEl=qList.querySelector('.dvt-q[data-i="'+i+'"]');
+          qEl.querySelectorAll(".dvt-opt").forEach(function(o){
+            o.style.pointerEvents="none";var j=+o.getAttribute("data-j");
+            if(q.opts[j]===q.correct)o.classList.add("ok");
+            else if(ansArr[i]===j)o.classList.add("bad");
+          });
+          if(ansArr[i]!==null&&q.opts[ansArr[i]]===q.correct)correct++;
+        });
+        var pct=Math.round(correct/quiz.length*100);
+        var g=pct>=90?"Odlično! 🎉 Dvojino obvladaš!":pct>=70?"Prav dobro! 👏":pct>=50?"Dobro — ponovi kartice. 💪":"Še vaja 🌱 — preglej tabele zgoraj.";
+        qSub.style.display="none";qRes.style.display="block";
+        qRes.innerHTML='<div class="big">'+correct+" / "+quiz.length+'</div><div>'+pct+'%</div><div class="grade">'+g+'</div>';
+      });
+      document.getElementById("dvt-newquiz").addEventListener("click",function(){makeQuiz();renderQuiz();});
+      makeQuiz();renderQuiz();
+    })();
+    </script>
+
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      SECTION 1: NOUNS & CASES
@@ -549,7 +878,7 @@ textarea{width:100%;}
      EXAM 1 — GRAMMAR (60 questions)
 ═══════════════════════════════════════════════════════════════════════ -->
 <section id="s-exam1">
-  <div class="section-header sh-exam1" onclick="toggle(this)">📝 IZPIT 1 — Slovnični preizkus (60 vprašanj) <span>▼</span></div>
+  <div class="section-header sh-exam1" onclick="toggle(this)">📝 IZPIT 1 — Slovnični preizkus (66 vprašanj) <span>▼</span></div>
   <div class="section-body">
     <div class="play-bar">
       <button class="btn btn-primary btn-sm" onclick="speak('exam_start_1')">🔊 Navodila</button>
@@ -566,7 +895,7 @@ textarea{width:100%;}
      EXAM 2 — MIXED SKILLS (60 questions)
 ═══════════════════════════════════════════════════════════════════════ -->
 <section id="s-exam2">
-  <div class="section-header sh-exam2" onclick="toggle(this)">📝 IZPIT 2 — Mešani preizkus znanja (60 vprašanj) <span>▼</span></div>
+  <div class="section-header sh-exam2" onclick="toggle(this)">📝 IZPIT 2 — Mešani preizkus znanja (66 vprašanj) <span>▼</span></div>
   <div class="section-body">
     <div class="play-bar">
       <button class="btn btn-primary btn-sm" onclick="speak('exam_start_2')">🔊 Navodila</button>
@@ -583,7 +912,7 @@ textarea{width:100%;}
      EXAM 3 — B1 SIMULATION (60 questions)
 ═══════════════════════════════════════════════════════════════════════ -->
 <section id="s-exam3">
-  <div class="section-header sh-exam3" onclick="toggle(this)">📝 IZPIT 3 — Simulacija uradnega izpita B1 (60 vprašanj) <span>▼</span></div>
+  <div class="section-header sh-exam3" onclick="toggle(this)">📝 IZPIT 3 — Simulacija uradnega izpita B1 (64 vprašanj) <span>▼</span></div>
   <div class="section-body">
     <div class="play-bar">
       <button class="btn btn-primary btn-sm" onclick="speak('exam_start_3')">🔊 Navodila</button>
@@ -805,6 +1134,12 @@ const EXAM1 = [ // GRAMMAR — 60 questions
   {q:"'Vem, da mama kuha.' → 'da' je:", opts:["predlog","veznik","zaimek","prislov"], ans:1},
   {q:"Kateri vrstni red je pravilen?", opts:["Mama kosilo kuha.","Kuha mama kosilo.","Mama kuha kosilo.","Kosilo mama kuha."], ans:2},
   {q:"Vzročni odvisnik uvede veznik:", opts:["ko","ki","ker","čeprav"], ans:2},
+  // DVOJINA (dual) — production
+  {q:"Glagol 'delati' v 1. osebi dvojine (midva ...):", opts:["delam","delava","delamo","delata"], ans:1},
+  {q:"Glagol 'biti' v 2. osebi dvojine (vidva ...):", opts:["sta","sva","ste","si"], ans:0},
+  {q:"Imenovalnik dvojine samostalnika 'žena' (dve ...):", opts:["žene","žena","ženi","ženah"], ans:2},
+  {q:"'Dva' + 'mož' v imenovalniku dvojine → dva ...:", opts:["mož","možje","moža","možem"], ans:2},
+  {q:"Preteklik, dva moška: 'Midva sva ___ .' (delati)", opts:["delal","delala","delali","delale"], ans:1},
 ];
 
 const EXAM2 = [ // MIXED SKILLS — 60 questions
@@ -880,6 +1215,12 @@ const EXAM2 = [ // MIXED SKILLS — 60 questions
   // Personal identity
   {q:"'Kateri so tvoji hobiji?' → Pravilni odgovor na A2/B1:", opts:["Jaz imeti hobby branje.","Moji hobiji so branje in pohodništvo.","Hobi mi je branje.","Moj hobi je branje in pohodništvo."], ans:1},
   {q:"'Slovenija' — kateri je pravilni pridevnik (M)?", opts:["slovenian","slovenec","slovenski","slovenskega"], ans:2},
+  // DVOJINA (dual) — production
+  {q:"Zaimek za dve ženski (1. oseba dvojine):", opts:["midva","midve","mi","medva"], ans:1},
+  {q:"'Shall we two go?' → 'Midva ___ ?' (iti)", opts:["grem","greva","gremo","gresta"], ans:1},
+  {q:"'Midva se imava ___ .' (rad — dva moška)", opts:["rad","rada","radi","rade"], ans:1},
+  {q:"'Both girls are here.' → '___ punci sta tu.'", opts:["oba","obe","dva","oboje"], ans:1},
+  {q:"Pridevnik v dvojini: 'dve ___ hiši' (lep)", opts:["lepa","lepe","lepi","lepo"], ans:2},
 ];
 
 const EXAM3 = [ // B1 SIMULATION — 60 questions
@@ -953,6 +1294,12 @@ const EXAM3 = [ // B1 SIMULATION — 60 questions
   {q:"'Kakovostni pridevnik' se LAHKO stopnjuje:", opts:["da","ne","samo v primerjalniku","samo v presežniku"], ans:0},
   {q:"Slovenščina ima ___ sklonov.", opts:["4","5","6","7"], ans:2},
   {q:"'Dvojina' v slovenščini se uporablja za:", opts:["1 osebo ali stvar","2 osebi ali stvari","3 ali več","vedno v množini"], ans:1},
+  // DVOJINA (dual) — production
+  {q:"'Onadva ___ v kino.' (iti, 3. oseba dvojine)", opts:["gresta","greta","greva","gredo"], ans:0},
+  {q:"Preteklik, dve ženski: 'Sestri sta ___ .' (priti)", opts:["prišel","prišla","prišli","prišle"], ans:2},
+  {q:"Koliko oseb/stvari označuje dvojina?", opts:["1","2","3","4 ali več"], ans:1},
+  {q:"Imenovalnik dvojine: 'dve ___' (mesto)", opts:["mesta","mest","mestu","mesti"], ans:3},
+  {q:"'Vidva sta brata.' — beseda 'sta' je oblika glagola:", opts:["imeti","biti","delati","iti"], ans:1},
 ];
 
 // ── Build exams ──
