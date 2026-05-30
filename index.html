@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slovenščina A2+/B1 — Complete Course</title>
+<!-- PWA / installable offline app -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1a3a5c">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Slovenščina">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -566,6 +574,38 @@
 
   .dl-file-list a:hover { background: rgba(200,150,12,0.2); color: white; }
 
+  .dl-btn.secondary {
+    background: rgba(255,255,255,0.1);
+    color: #e8f0f8;
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: none;
+    font-size: 0.85rem;
+    padding: 0.55rem 1.1rem;
+  }
+  .dl-btn.secondary:hover:not(:disabled) {
+    background: rgba(255,255,255,0.18);
+    box-shadow: none;
+  }
+
+  .dl-help {
+    margin-top: 1rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(200,150,12,0.25);
+    border-radius: 10px;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.82rem;
+    color: #c8dff0;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    display: none;
+  }
+  .dl-help.active { display: block; }
+  .dl-help strong { color: var(--gold); }
+  .dl-help .os { display: none; }
+  .dl-help .os.show { display: block; }
+  .dl-help .step-emoji { font-style: normal; }
+
   /* ── Responsive ── */
   @media (max-width: 600px) {
     .hero-inner { padding: 3rem 1.2rem 2.5rem; }
@@ -734,19 +774,37 @@
 
   <div class="download-card">
     <div class="download-head">
-      <span class="dl-emoji">📥</span>
+      <span class="dl-emoji">📲</span>
       <div>
-        <h3>Download the whole course</h3>
-        <p>One ZIP with all 9 lessons + this page. Audio is embedded — works with no internet, forever.</p>
+        <h3>Install as an offline app</h3>
+        <p>Save the whole course to your device, then add it to your home screen. Opens like an app and works with no internet — perfect for phones &amp; tablets.</p>
       </div>
     </div>
     <div class="dl-actions">
-      <button class="dl-btn" id="dlAllBtn">⬇ Download all (.zip)</button>
+      <button class="dl-btn" id="dlSaveBtn">⬇ Save course for offline</button>
+      <button class="dl-btn" id="dlInstallBtn" style="display:none">📲 Add to home screen</button>
       <span class="dl-status" id="dlStatus"></span>
     </div>
     <div class="dl-progress" id="dlProgress"><div class="dl-progress-bar" id="dlProgressBar"></div></div>
+
+    <div class="dl-help" id="dlHelp">
+      <strong>✓ Saved for offline.</strong> Now add it to your home screen so you can open it anytime:
+      <div class="os" id="osIos">
+        <span class="step-emoji">📱</span> <strong>iPhone / iPad:</strong> tap the <strong>Share</strong> button, then <strong>“Add to Home Screen.”</strong>
+      </div>
+      <div class="os" id="osAndroid">
+        <span class="step-emoji">🤖</span> <strong>Android:</strong> tap the <strong>⋮ menu</strong>, then <strong>“Add to Home screen”</strong> / <strong>“Install app.”</strong>
+      </div>
+      <div class="os" id="osDesktop">
+        <span class="step-emoji">💻</span> <strong>Desktop:</strong> click the <strong>install icon</strong> in the address bar, or use the button above.
+      </div>
+    </div>
+
     <details class="dl-files">
-      <summary>Or download lessons individually</summary>
+      <summary>Prefer plain files? Download instead</summary>
+      <div style="margin:0.7rem 0;">
+        <button class="dl-btn secondary" id="dlZipBtn">⬇ Download all as .zip</button>
+      </div>
       <div class="dl-file-list">
         <a href="index.html" download>index.html</a>
         <a href="lesson1.html" download>Lesson 1</a>
@@ -760,7 +818,7 @@
         <a href="lesson9.html" download>Lesson 9</a>
       </div>
       <p style="font-size:0.75rem;color:#8aa8c8;margin-top:0.6rem;line-height:1.5;">
-        Save every file into the <strong>same folder</strong>, then open <code>index.html</code> — the lesson links and audio all work offline.
+        The .zip is best on a computer: unzip it, keep all files in the <strong>same folder</strong>, then open <code>index.html</code>. On phones, use “Save course for offline” above instead.
       </p>
     </details>
   </div>
@@ -822,86 +880,166 @@
 
 <script>
 (function () {
+  // Files the offline app needs. Paths are relative so this works on
+  // GitHub Pages regardless of the repo subpath.
   var FILES = [
     'index.html',
     'lesson1.html', 'lesson2.html', 'lesson3.html', 'lesson4.html',
     'lesson5.html', 'lesson6.html', 'lesson7.html', 'lesson8.html',
     'lesson9.html'
   ];
-  var ZIP_NAME = 'slovenscina-A2-B1-course.zip';
-  var JSZIP_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+  var EXTRA = ['manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
+  var CACHE = 'slovenscina-course-v1';
 
-  var btn      = document.getElementById('dlAllBtn');
-  var status   = document.getElementById('dlStatus');
-  var progress = document.getElementById('dlProgress');
-  var bar      = document.getElementById('dlProgressBar');
+  var saveBtn    = document.getElementById('dlSaveBtn');
+  var installBtn = document.getElementById('dlInstallBtn');
+  var zipBtn     = document.getElementById('dlZipBtn');
+  var status     = document.getElementById('dlStatus');
+  var progress   = document.getElementById('dlProgress');
+  var bar        = document.getElementById('dlProgressBar');
+  var help       = document.getElementById('dlHelp');
 
   function setProgress(p) {
     progress.classList.add('active');
     bar.style.width = Math.round(p * 100) + '%';
   }
 
+  // ── Register the service worker (enables true offline) ──────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* non-fatal */ });
+    });
+  }
+
+  // ── Detect platform for the "add to home screen" hint ───────────────
+  function showHelp() {
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/.test(ua);
+    var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+    document.getElementById('osIos').classList.toggle('show', isIOS);
+    document.getElementById('osAndroid').classList.toggle('show', isAndroid);
+    document.getElementById('osDesktop').classList.toggle('show', !isIOS && !isAndroid);
+    if (!standalone) help.classList.add('active');
+  }
+
+  // ── "Save course for offline": fill the Cache the SW reads from ─────
+  saveBtn.addEventListener('click', function () {
+    if (!('caches' in window)) {
+      status.textContent = '⚠ Your browser can’t store offline data — use the .zip option below.';
+      return;
+    }
+    saveBtn.disabled = true;
+    status.textContent = 'Preparing…';
+    setProgress(0.02);
+
+    var all = FILES.concat(EXTRA);
+    caches.open(CACHE).then(function (cache) {
+      var done = 0;
+      function next(i) {
+        if (i >= all.length) return Promise.resolve();
+        var name = all[i];
+        status.textContent = 'Saving ' + name + ' (' + (i + 1) + '/' + all.length + ')…';
+        return fetch(name, { cache: 'reload' }).then(function (r) {
+          if (!r.ok) throw new Error('Couldn’t fetch ' + name + ' (' + r.status + ')');
+          return cache.put(name, r);
+        }).then(function () {
+          done++;
+          setProgress(0.02 + (done / all.length) * 0.98);
+          return next(i + 1);
+        });
+      }
+      return next(0);
+    }).then(function () {
+      setProgress(1);
+      status.textContent = '✓ Whole course saved — it now works with no internet.';
+      saveBtn.textContent = '✓ Saved for offline';
+      saveBtn.disabled = false;
+      showHelp();
+    }).catch(function (err) {
+      progress.classList.remove('active');
+      status.textContent = '⚠ ' + err.message + '. Try again, or use the .zip option below.';
+      saveBtn.disabled = false;
+    });
+  });
+
+  // ── Native install prompt (Android / desktop Chrome & Edge) ─────────
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = '';
+  });
+  installBtn.addEventListener('click', function () {
+    if (!deferredPrompt) { showHelp(); return; }
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.finally(function () {
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    });
+  });
+  window.addEventListener('appinstalled', function () {
+    installBtn.style.display = 'none';
+    status.textContent = '✓ Installed! Find it on your home screen.';
+  });
+
+  // ── Fallback: download everything as a .zip (best on desktop) ───────
+  var ZIP_NAME = 'slovenscina-A2-B1-course.zip';
+  var JSZIP_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+
   function loadJSZip() {
     return new Promise(function (resolve, reject) {
       if (window.JSZip) return resolve(window.JSZip);
       var s = document.createElement('script');
       s.src = JSZIP_SRC;
-      s.onload = function () { window.JSZip ? resolve(window.JSZip) : reject(new Error('JSZip failed to initialise')); };
-      s.onerror = function () { reject(new Error('Could not load the ZIP library (you may be offline)')); };
+      s.onload = function () { window.JSZip ? resolve(window.JSZip) : reject(new Error('ZIP library failed to load')); };
+      s.onerror = function () { reject(new Error('Couldn’t load the ZIP library (you may be offline)')); };
       document.head.appendChild(s);
     });
   }
 
-  btn.addEventListener('click', function () {
-    btn.disabled = true;
-    status.textContent = 'Preparing…';
+  zipBtn.addEventListener('click', function () {
+    zipBtn.disabled = true;
+    status.textContent = 'Preparing ZIP…';
     setProgress(0.02);
 
     loadJSZip().then(function (JSZip) {
       var zip = new JSZip();
       var done = 0;
-
-      // Fetch files one at a time to keep memory in check.
-      function fetchNext(i) {
+      function next(i) {
         if (i >= FILES.length) return Promise.resolve();
         var name = FILES[i];
-        status.textContent = 'Downloading ' + name + ' (' + (i + 1) + '/' + FILES.length + ')…';
+        status.textContent = 'Adding ' + name + ' (' + (i + 1) + '/' + FILES.length + ')…';
         return fetch(name, { cache: 'reload' }).then(function (r) {
           if (!r.ok) throw new Error('Failed to fetch ' + name + ' (' + r.status + ')');
           return r.blob();
         }).then(function (blob) {
           zip.file(name, blob);
           done++;
-          // Reserve 90% of the bar for fetching, 10% for zipping.
           setProgress(0.02 + (done / FILES.length) * 0.88);
-          return fetchNext(i + 1);
+          return next(i + 1);
         });
       }
-
-      return fetchNext(0).then(function () {
+      return next(0).then(function () {
         status.textContent = 'Packaging ZIP…';
-        // STORE: the HTML already contains compressed (base64 mp3) audio, so
-        // deflating wastes time for almost no size gain.
+        // STORE: HTML already holds compressed (base64 mp3) audio.
         return zip.generateAsync({ type: 'blob', compression: 'STORE' }, function (meta) {
           setProgress(0.90 + (meta.percent / 100) * 0.10);
         });
       }).then(function (blob) {
         var url = URL.createObjectURL(blob);
         var a = document.createElement('a');
-        a.href = url;
-        a.download = ZIP_NAME;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
+        a.href = url; a.download = ZIP_NAME;
+        document.body.appendChild(a); a.click(); a.remove();
         setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
         setProgress(1);
-        status.textContent = '✓ Done — saved as ' + ZIP_NAME + '. Unzip it and open index.html.';
-        btn.disabled = false;
+        status.textContent = '✓ Downloaded ' + ZIP_NAME + '. Unzip it and open index.html.';
+        zipBtn.disabled = false;
       });
     }).catch(function (err) {
       progress.classList.remove('active');
-      status.textContent = '⚠ ' + err.message + '. Use the individual links below instead.';
-      btn.disabled = false;
+      status.textContent = '⚠ ' + err.message + '. Use the individual links instead.';
+      zipBtn.disabled = false;
     });
   });
 })();
