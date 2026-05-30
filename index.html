@@ -416,6 +416,156 @@
   .lesson-card:nth-child(8) { animation-delay: 0.40s; }
   .lesson-card:nth-child(9) { animation-delay: 0.45s; }
 
+  /* ── Download / Offline ── */
+  .download-card {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: white;
+    border-radius: 14px;
+    padding: 1.8rem 1.6rem;
+    margin-bottom: 3.5rem;
+    box-shadow: 0 8px 30px rgba(13,36,64,0.25);
+    border: 1px solid rgba(200,150,12,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .download-card::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -40px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(200,150,12,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .download-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .download-head .dl-emoji { font-size: 2.2rem; flex-shrink: 0; }
+
+  .download-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .download-head p {
+    font-size: 0.85rem;
+    color: #a8c8e8;
+    margin-top: 0.15rem;
+  }
+
+  .dl-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .dl-btn {
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    box-shadow: 0 4px 14px rgba(200,150,12,0.35);
+  }
+
+  .dl-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(200,150,12,0.45);
+    background: #e0a814;
+  }
+
+  .dl-btn:disabled { opacity: 0.7; cursor: progress; }
+
+  .dl-status {
+    font-size: 0.82rem;
+    color: #c8dff0;
+    min-height: 1.1em;
+  }
+
+  .dl-progress {
+    height: 6px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 100px;
+    overflow: hidden;
+    margin-top: 0.9rem;
+    display: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  .dl-progress.active { display: block; }
+
+  .dl-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gold);
+    border-radius: 100px;
+    transition: width 0.25s ease;
+  }
+
+  .dl-files {
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .dl-files summary {
+    cursor: pointer;
+    font-size: 0.82rem;
+    color: #a8c8e8;
+    font-weight: 600;
+    list-style: none;
+    user-select: none;
+  }
+
+  .dl-files summary::-webkit-details-marker { display: none; }
+  .dl-files summary::before { content: '▸ '; }
+  .dl-files[open] summary::before { content: '▾ '; }
+  .dl-files summary:hover { color: var(--gold); }
+
+  .dl-file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.7rem;
+  }
+
+  .dl-file-list a {
+    font-size: 0.78rem;
+    color: #c8dff0;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 0.35rem 0.7rem;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .dl-file-list a:hover { background: rgba(200,150,12,0.2); color: white; }
+
   /* ── Responsive ── */
   @media (max-width: 600px) {
     .hero-inner { padding: 3rem 1.2rem 2.5rem; }
@@ -578,6 +728,43 @@
 
   </div>
 
+  <!-- Download / Offline -->
+  <p class="section-label">Keep it forever</p>
+  <h2 class="section-title">Take the Course Offline</h2>
+
+  <div class="download-card">
+    <div class="download-head">
+      <span class="dl-emoji">📥</span>
+      <div>
+        <h3>Download the whole course</h3>
+        <p>One ZIP with all 9 lessons + this page. Audio is embedded — works with no internet, forever.</p>
+      </div>
+    </div>
+    <div class="dl-actions">
+      <button class="dl-btn" id="dlAllBtn">⬇ Download all (.zip)</button>
+      <span class="dl-status" id="dlStatus"></span>
+    </div>
+    <div class="dl-progress" id="dlProgress"><div class="dl-progress-bar" id="dlProgressBar"></div></div>
+    <details class="dl-files">
+      <summary>Or download lessons individually</summary>
+      <div class="dl-file-list">
+        <a href="index.html" download>index.html</a>
+        <a href="lesson1.html" download>Lesson 1</a>
+        <a href="lesson2.html" download>Lesson 2</a>
+        <a href="lesson3.html" download>Lesson 3</a>
+        <a href="lesson4.html" download>Lesson 4</a>
+        <a href="lesson5.html" download>Lesson 5</a>
+        <a href="lesson6.html" download>Lesson 6</a>
+        <a href="lesson7.html" download>Lesson 7</a>
+        <a href="lesson8.html" download>Lesson 8</a>
+        <a href="lesson9.html" download>Lesson 9</a>
+      </div>
+      <p style="font-size:0.75rem;color:#8aa8c8;margin-top:0.6rem;line-height:1.5;">
+        Save every file into the <strong>same folder</strong>, then open <code>index.html</code> — the lesson links and audio all work offline.
+      </p>
+    </details>
+  </div>
+
   <!-- Study Tips -->
   <p class="section-label">How to use this course</p>
   <h2 class="section-title">Study Tips</h2>
@@ -632,6 +819,93 @@
 <footer>
   Slovenščina A2+/B1 Complete Course &nbsp;·&nbsp; Neural TTS: Petra &amp; Rok (sl-SI) &nbsp;·&nbsp; All audio embedded
 </footer>
+
+<script>
+(function () {
+  var FILES = [
+    'index.html',
+    'lesson1.html', 'lesson2.html', 'lesson3.html', 'lesson4.html',
+    'lesson5.html', 'lesson6.html', 'lesson7.html', 'lesson8.html',
+    'lesson9.html'
+  ];
+  var ZIP_NAME = 'slovenscina-A2-B1-course.zip';
+  var JSZIP_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+
+  var btn      = document.getElementById('dlAllBtn');
+  var status   = document.getElementById('dlStatus');
+  var progress = document.getElementById('dlProgress');
+  var bar      = document.getElementById('dlProgressBar');
+
+  function setProgress(p) {
+    progress.classList.add('active');
+    bar.style.width = Math.round(p * 100) + '%';
+  }
+
+  function loadJSZip() {
+    return new Promise(function (resolve, reject) {
+      if (window.JSZip) return resolve(window.JSZip);
+      var s = document.createElement('script');
+      s.src = JSZIP_SRC;
+      s.onload = function () { window.JSZip ? resolve(window.JSZip) : reject(new Error('JSZip failed to initialise')); };
+      s.onerror = function () { reject(new Error('Could not load the ZIP library (you may be offline)')); };
+      document.head.appendChild(s);
+    });
+  }
+
+  btn.addEventListener('click', function () {
+    btn.disabled = true;
+    status.textContent = 'Preparing…';
+    setProgress(0.02);
+
+    loadJSZip().then(function (JSZip) {
+      var zip = new JSZip();
+      var done = 0;
+
+      // Fetch files one at a time to keep memory in check.
+      function fetchNext(i) {
+        if (i >= FILES.length) return Promise.resolve();
+        var name = FILES[i];
+        status.textContent = 'Downloading ' + name + ' (' + (i + 1) + '/' + FILES.length + ')…';
+        return fetch(name, { cache: 'reload' }).then(function (r) {
+          if (!r.ok) throw new Error('Failed to fetch ' + name + ' (' + r.status + ')');
+          return r.blob();
+        }).then(function (blob) {
+          zip.file(name, blob);
+          done++;
+          // Reserve 90% of the bar for fetching, 10% for zipping.
+          setProgress(0.02 + (done / FILES.length) * 0.88);
+          return fetchNext(i + 1);
+        });
+      }
+
+      return fetchNext(0).then(function () {
+        status.textContent = 'Packaging ZIP…';
+        // STORE: the HTML already contains compressed (base64 mp3) audio, so
+        // deflating wastes time for almost no size gain.
+        return zip.generateAsync({ type: 'blob', compression: 'STORE' }, function (meta) {
+          setProgress(0.90 + (meta.percent / 100) * 0.10);
+        });
+      }).then(function (blob) {
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = ZIP_NAME;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        setProgress(1);
+        status.textContent = '✓ Done — saved as ' + ZIP_NAME + '. Unzip it and open index.html.';
+        btn.disabled = false;
+      });
+    }).catch(function (err) {
+      progress.classList.remove('active');
+      status.textContent = '⚠ ' + err.message + '. Use the individual links below instead.';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
